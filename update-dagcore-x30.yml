@@ -1,0 +1,78 @@
+name: Refresh DAGCore X30 mining and wallet feed
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dagcore-x30-feed
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve public X30 mining data and Chain 1404 wallet balance
+        env:
+          MINER: '0xBcc94d4d4A69027Af162930Fd44D87Eb34540035'
+        run: |
+          python3 - <<'PYCODE'
+          import json, os, pathlib, urllib.request
+          from datetime import datetime, timezone
+          wallet = os.environ['MINER']
+          now = lambda: datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
+          data = None
+          for host in ('dagcore.net','dagcore.eu'):
+              try:
+                  request = urllib.request.Request(f'https://{host}/api/v1/miners/{wallet}', headers={'Accept':'application/json','User-Agent':'Solstice1-Dashboard/1.0'})
+                  with urllib.request.urlopen(request, timeout=20) as response:
+                      candidate = json.load(response)
+                  if not isinstance(candidate,dict) or not all(k in candidate for k in ('generatedAt','hashrate','balance')):
+                      raise ValueError('Incomplete miner response')
+                  data = candidate
+                  print('Miner API host:',host)
+                  break
+              except Exception as error:
+                  print('Miner API unavailable:',host,str(error))
+          if data is None:
+              raise SystemExit('No current miner data; previous file retained')
+          data['_dashboardFetchedAt'] = now()
+          # Only accept wallet balance from a RPC reporting Chain ID 1404.
+          # A failed RPC never substitutes a historical or guessed balance.
+          data['walletBalance'] = None
+          for rpc_url in ('https://rpc.dagcore.net',):
+              try:
+                  def rpc(method,params):
+                      body=json.dumps({'jsonrpc':'2.0','id':1,'method':method,'params':params}).encode()
+                      req=urllib.request.Request(rpc_url,data=body,headers={'Content-Type':'application/json','Accept':'application/json'},method='POST')
+                      with urllib.request.urlopen(req,timeout=15) as response:
+                          result=json.load(response)
+                      if not isinstance(result,dict) or 'error' in result or not isinstance(result.get('result'),str):
+                          raise ValueError('Invalid RPC response')
+                      return result['result']
+                  chain=rpc('eth_chainId',[])
+                  if int(chain,16)!=1404:
+                      raise ValueError('Unexpected chain ID')
+                  block=rpc('eth_blockNumber',[])
+                  balance=rpc('eth_getBalance',[wallet,'latest'])
+                  data['walletBalance']={'address':wallet,'chainId':chain,'balanceWei':str(int(balance,16)),'blockNumber':int(block,16),'rpc':rpc_url,'fetchedAt':now()}
+                  break
+              except Exception as error:
+                  print('Wallet RPC unavailable:',rpc_url,str(error))
+          pathlib.Path('dagcore-x30-live.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
+          PYCODE
+      - name: Publish updated feed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dagcore-x30-live.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh DAGCore mining and Chain 1404 wallet balance'
+            git push
+          fi
