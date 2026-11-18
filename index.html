@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Solstice1 Community BDAG Chain 1404 mining and network operations log.">
+<title>Solstice1 Operations Dashboard | Chain 1404 · V3</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1018;--panel:#121a27;--stroke:#263447;--white:#eef3fb;--muted:#a4b3ca;--mint:#62e5bd;--pink:#f396d2;--amber:#f3c175;--blue:#9ec4ff;font-family:Inter,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white)}a{color:var(--mint);text-underline-offset:4px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--mint);outline-offset:3px}button{border:1px solid var(--stroke);border-radius:8px;background:#182335;color:var(--white);padding:9px 13px;font-size:.86rem;font-weight:650}button:hover{border-color:var(--mint)}.primary{background:var(--mint);color:#081a17;border-color:var(--mint)}header{border-bottom:1px solid var(--stroke);background:#0d1420}.top,main,footer{max-width:1240px;margin:auto;padding-inline:28px}.top{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{font-weight:750;letter-spacing:-.02em}.brand span{color:var(--pink)}.actions{display:flex;gap:8px;flex-wrap:wrap}.hero{margin:30px 0 22px;padding:38px;border:1px solid #374358;border-radius:18px;background:radial-gradient(ellipse at 93% 0%,#44223f 0,transparent 47%),radial-gradient(ellipse at 78% 115%,#144039 0,transparent 52%),#141d2d}.eyebrow,.metric dt,.stamp,.section-count{font-family:"IBM Plex Mono",Consolas,monospace;font-size:.76rem;letter-spacing:.05em}.eyebrow{color:var(--mint);margin:0 0 12px}.hero h1{font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.055em;line-height:1;margin:0 0 13px}.hero p:last-child{margin:0;color:#c0cbde;line-height:1.55}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}.toolbar nav{display:flex;gap:8px;flex-wrap:wrap}.toolbar nav a{color:var(--muted);text-decoration:none;font-size:.82rem;padding:7px 10px;border:1px solid var(--stroke);border-radius:6px}.toolbar nav a:hover{color:var(--mint);border-color:var(--mint)}.stamp{color:var(--muted)}.legend{display:flex;gap:10px 17px;flex-wrap:wrap;padding:14px 17px;border:1px solid var(--stroke);border-radius:9px;color:var(--muted);font-size:.82rem}.legend span{display:inline-flex;gap:6px;align-items:center}.badge{display:inline-flex;align-items:center;gap:6px;border:1px solid currentColor;border-radius:30px;padding:3px 8px;font-size:.72rem;font-weight:650;white-space:nowrap}.verified,.healthy,.live{color:var(--mint)}.operator,.historical{color:var(--blue)}.unverified,.degraded,.pending{color:var(--amber)}.offline{color:var(--pink)}.unknown{color:var(--muted)}.group{margin:28px 0}.section-head,.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.section-head{align-items:center;margin-bottom:12px}h2{margin:0;font-size:1.15rem;letter-spacing:-.02em}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--stroke);border-radius:13px;padding:19px;min-width:0}.card h3{margin:0 0 5px;font-size:1.06rem;overflow-wrap:anywhere}.subtitle,.note,.hint{font-size:.83rem;color:var(--muted);line-height:1.5}.subtitle{margin:0}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;margin:15px 0}.metric{margin:0;padding:11px;background:#0e1621;border-radius:8px;min-width:0}.metric dt{color:var(--muted);letter-spacing:0}.metric dd{margin:5px 0 0;font-weight:700;overflow-wrap:anywhere}.evidence{border-top:1px solid var(--stroke);padding-top:11px}.evidence .stamp{display:block;margin-top:8px;letter-spacing:0}.note{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0}.evidence a{display:inline-block;margin-top:7px;font-size:.8rem}.chart{margin:12px 0 15px}.chart summary{font-size:.83rem;color:var(--blue);cursor:pointer}.chart-row{margin-top:9px;font-size:.77rem;color:var(--muted)}.chart-row span{display:block;margin-bottom:4px}.track{height:7px;background:#263447;border-radius:9px;overflow:hidden}.bar{height:100%;background:var(--mint);border-radius:9px}.empty{border:1px dashed var(--stroke);border-radius:10px;padding:15px;color:var(--muted);font-size:.85rem}.feedback{min-height:1.3em;margin:8px 0 0;color:var(--mint);font-size:.83rem}.feedback.error{color:var(--pink)}footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--stroke);padding-block:20px 26px;color:var(--muted);font-size:.86rem}footer strong{color:var(--pink)}dialog{width:min(580px,calc(100% - 24px));max-height:90vh;background:var(--panel);color:var(--white);border:1px solid var(--stroke);border-radius:14px;padding:20px}dialog::backdrop{background:#05080dcc}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}label{display:grid;gap:5px;color:#c0cce0;font-size:.84rem}.wide{grid-column:1/-1}input,select,textarea{width:100%;border:1px solid var(--stroke);border-radius:6px;padding:8px;background:#0d1520;color:var(--white)}textarea{resize:vertical}form .actions{justify-content:flex-end}.skip{position:fixed;transform:translateY(-150%);background:var(--bg);padding:8px}.skip:focus{transform:none;z-index:2}@media(max-width:650px){.top,main,footer{padding-inline:15px}.top{padding-block:12px}.hero{padding:25px;margin-top:17px}.grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.section-head{gap:7px}.legend{align-items:flex-start;flex-direction:column}}
+.live-status{font-weight:700;color:var(--mint)}.live-error{color:var(--pink)}
+</style>
+</head>
+<body>
+<a class="skip" href="#dashboard">Skip to dashboard</a>
+<header><div class="top"><div class="brand"><span>Solstice1</span> Operations Dashboard</div><div class="actions">
+<button id="export">Export JSON</button><button id="import">Import JSON</button><input id="file" type="file" accept=".json,application/json" hidden>
+</div></div></header>
+<main id="dashboard">
+<section class="hero"><p class="eyebrow">COMMUNITY BDAG / CHAIN 1404</p><h1>Solstice1 Operations Dashboard</h1><p>Track mining, node releases, network health, allocations and exchange updates in one place.</p></section>
+<div class="toolbar"><nav id="nav" aria-label="Dashboard sections"></nav><span class="stamp">Version 3 · Live DAGCore X30 + manual records · UTC</span></div>
+<div class="legend" aria-label="Evidence labels">
+<span><b class="badge verified">Verified fact</b> Checked against evidence</span>
+<span><b class="badge operator">Operator announcement</b> Reported by an operator</span>
+<span><b class="badge unverified">Unverified claim</b> Still needs evidence</span>
+</div>
+<p class="hint">Updates save in this browser. Export a backup or import it on another device. Statuses reflect the last recorded check.</p>
+<p id="feedback" class="feedback" role="status"></p>
+<section class="group" id="live-x30"><div class="section-head"><h2>LIVE · X30 ASIC on DAGCore</h2><button id="refresh-x30">Refresh now</button></div>
+<div class="card"><p id="live-state" role="status" class="hint">Connecting to DAGCore read-only API…</p><div class="metrics" id="live-metrics"></div><p id="live-time" class="stamp"></p><p class="hint">Automatically checks every 5 minutes while this page is open. Hashrates are estimates. A stale or failed API response is never shown as current. Live figures are separate from manually saved historical records.</p><a href="https://dagcore.eu/api.html" target="_blank" rel="noopener noreferrer">DAGCore API documentation ↗</a></div></section>
+<div id="sections"></div>
+</main>
+<footer><span>Community Build Decentralise And Grow</span><strong>Facts first, hype second!</strong></footer>
+<dialog id="editor" aria-labelledby="editor-title">
+<form id="form"><h2 id="editor-title"></h2><div class="fields" id="fields"></div>
+<p class="hint">Use UTC for observation times. A new observation date or time adds a reward reading.</p>
+<p id="form-feedback" class="feedback error" role="alert"></p>
+<div class="actions"><button type="button" id="cancel">Cancel</button><button class="primary">Save update</button></div></form>
+</dialog>
+<dialog id="import-dialog" aria-labelledby="import-title"><h2 id="import-title">Import dashboard backup</h2><p class="hint">Importing replaces the records and reward history in this browser. Export a backup first to keep a copy.</p><div class="actions"><button id="cancel-import">Cancel</button><button class="primary" id="confirm-import">Replace records</button></div></dialog>
+<script>
+'use strict';
+const groups = [
+  ['gpu','GPU mining','GPU mining','BDAGExplorer',[['rate','Hashrate (MH/s)','number'],['reward','Rewards (BDAG)','number'],['period','Reward period','period'],['version','Miner version'],['pool','Pool status','status']]],
+  ['asic','X30 ASIC mining','X30 ASIC mining','DAGCore',[['rate','Hashrate (MH/s)','number'],['reward','Rewards (BDAG)','number'],['period','Reward period','period'],['pool','Pool status','status']]],
+  ['node','Node & releases','Node & releases','Community BDAG',[['version','Node version'],['peers','Consensus peers','integer'],['release','Release stage']]],
+  ['health','RPC & explorers','RPC & explorers','Network access',[['kind','Service type'],['endpoint','Service URL','url'],['chain','Chain ID returned','integer']]],
+  ['wallet','Wallet & dApps','Wallet & dApps','Allocation tracking',[['balance','Wallet balance (BDAG)','number'],['allocated','dApp allocation (BDAG)','number'],['purpose','Allocation purpose']]],
+  ['listings','Exchange listings','Exchange listings','Listing evidence',[['exchange','Exchange'],['pair','Trading pair'],['progress','Listing stage','listing']]]
+];
+const statusLabels = {unknown:'Awaiting check',healthy:'Operational',degraded:'Degraded',offline:'Offline',historical:'Historical',pending:'Pending',live:'Live'};
+const evidenceLabels = {verified:'Verified fact',operator:'Operator announcement',unverified:'Unverified claim'};
+const evidenceOptions = {unknown:'Awaiting evidence',...evidenceLabels};
+const choices = {status:statusLabels,period:{daily:'24-hour total',weekly:'7-day total',payout:'Single payout',cumulative:'Cumulative total',other:'See evidence note'},listing:{watching:'Watching',announced:'Announced',scheduled:'Scheduled',live:'Trading live',paused:'Paused',withdrawn:'Withdrawn'}};
+const initial = [
+  {id:'gpu',group:'gpu',title:'RTX 5060 GPU',status:'historical',pool:'unknown',evidence:'operator',date:'2026-09-26',rate:'1.22',reward:'43385',period:'other',note:'Solstice1 recorded approximately 1.22 MH/s and 43,385 BDAG in rewards. The reward window was unspecified.',url:'https://mining.bdagexplorer.com/'},
+  {id:'asic',group:'asic',title:'X30 ASIC',status:'unknown',pool:'unknown',evidence:'unknown',note:'Enter a dated hash rate or payout from the DAGCore dashboard.',url:'https://explorer.dagcore.net/'},
+  {id:'node',group:'node',title:'Solstice1 RC2 node',status:'historical',version:'2.1.0-rc.2',evidence:'operator',release:'Development prerelease',note:'The project journal records a prior installation with zero consensus peers that was later removed. Enter a fresh node check when available.'},
+  {id:'release',group:'node',title:'Published RC2 release record',status:'historical',version:'2.1.0-rc.2',release:'Development prerelease',date:'2026-10-10',evidence:'verified',note:'The project journal confirms the release and install companion were inspected on this date.',url:'https://blockdagengineering.github.io/bdag-ipfs-release-page/releases/2.1.0-rc.2/install-v1/INSTALL.html'},
+  {id:'rpc',group:'health',title:'DAGCore RPC',status:'unknown',kind:'RPC',endpoint:'https://rpc.dagcore.net',evidence:'unknown',note:'Record a UTC check and the chain ID returned.'},
+  {id:'explorer',group:'health',title:'Community East Explorer',status:'unknown',kind:'Explorer',endpoint:'https://explorer.east.bdag-us.org/',evidence:'unknown',note:'Record when the explorer loads and whether recent blocks are advancing.'},
+  {id:'treasury',group:'wallet',title:'Community wallet',status:'unknown',evidence:'unknown',note:'Enter the latest observed balance and intended dApp allocation.'}
+];
+const key = 'solstice1-chain1404-v1';
+const byId = id => document.getElementById(id);
+const number = new Intl.NumberFormat('en',{maximumFractionDigits:20});
+const groupFor = id => groups.find(group => group[0] === id);
+const dateLabel = date => date.includes('T') ? date.replace('T',' ').replace('Z',' UTC') : date + ' UTC';
+const safeUrl = value => {try {const url = new URL(value); return ['https:','http:'].includes(url.protocol) ? url.href : '';} catch {return '';}};
+function element(tag, value='', css=''){
+  const el = document.createElement(tag);
+  if (value) el.textContent = value;
+  if (css) el.className = css;
+  return el;
+}
+function badge(code, labels){return element('span',labels[code] || labels.unknown,'badge '+code);}
+function link(label,url){const a=element('a',label);a.href=safeUrl(url);a.target='_blank';a.rel='noopener noreferrer';return a;}
+function button(label, action){const b=element('button',label); b.type='button';b.addEventListener('click',action);return b;}
+function tell(message,error=false){byId('feedback').textContent=message;byId('feedback').classList.toggle('error',error);}
+function validDate(date){
+  if (!/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}Z)?$/.test(date)) return false;
+  const value = new Date(date);
+  return Number.isFinite(value.getTime()) && value.toISOString().startsWith(date.replace('Z',''));
+}
+function normalizeRecord(record){
+  const group=groupFor(record?.group);
+  if (!group || typeof record.id!=='string' || !record.id || typeof record.title!=='string' || !record.title.trim()) throw Error('A record is missing its section, ID or name.');
+  const copy={id:record.id,group:record.group};
+  const fields=[['title','','text'],['status','','status'],['evidence','','evidence'],['date','','date'],['note','','text'],['url','','url'],...group[4]];
+  for(const [key, , type] of fields){
+    const value=record[key]??'';
+    if(typeof value!=='string') throw Error('A record contains an invalid field.');
+    if(value==='') continue;
+    const options=type==='evidence'?evidenceOptions:choices[type];
+    if(options && !Object.hasOwn(options,value)) throw Error('A record has an invalid status or evidence label.');
+    if(type==='url' && !safeUrl(value)) throw Error('Use a full HTTP or HTTPS evidence or service link.');
+    if(type==='date' && !validDate(value)) throw Error('Enter a valid UTC observation date.');
+    if((type==='integer'||type==='number') && (!/^\d+(\.\d+)?$/.test(value) || !Number.isFinite(Number(value)) || (type==='integer' && !/^\d+$/.test(value)))) throw Error('Enter a non-negative number for each figure.');
+    copy[key]=value;
+  }
+  if(copy.evidence==='verified' && (!copy.date || !(copy.note?.trim() || copy.url))) throw Error('A verified fact needs an observation date and an evidence link or note.');
+  if(copy.reward && (!copy.date || !copy.period)) throw Error('A reward reading needs an observation date and a reward period.');
+  return copy;
+}
+function readBackup(data){
+  if(data?.schema!==1 || !Array.isArray(data.records) || !Array.isArray(data.history)) throw Error('Choose a dashboard JSON backup.');
+  const records=data.records.map(normalizeRecord);
+  if(new Set(records.map(r=>r.id)).size!==records.length) throw Error('The backup has duplicate record IDs.');
+  const history=data.history.map(normalizeRecord);
+  if(history.some(r=>!r.reward || !records.some(c=>c.id===r.id && c.group===r.group))) throw Error('The backup has a reward reading without a matching miner.');
+  return {schema:1,records,history};
+}
+let state={schema:1,records:initial,history:initial.filter(r=>r.reward)};
+try {const stored=localStorage.getItem(key);if(stored) state=readBackup(JSON.parse(stored));} catch {tell('Saved records could not be read. Showing the starter records.',true);}
+function save(next){localStorage.setItem(key,JSON.stringify(next));state=next;render();}
+function chart(title,points){
+  const details=element('details','','chart');details.append(element('summary',title));
+  if(!points.length){details.append(element('p','Add a reading to populate this chart.','hint'));return details;}
+  details.open=true;
+  const max=Math.max(...points.map(p=>Number(p.value)),1);
+  for(const p of points){
+    const row=element('div','','chart-row');row.append(element('span',p.label+' · '+number.format(p.value)+' BDAG'));
+    const track=element('div','','track'),bar=element('div','','bar');
+    track.setAttribute('aria-hidden','true');bar.style.width=(100*Number(p.value)/max)+'%';track.append(bar);row.append(track);details.append(row);
+  }
+  return details;
+}
+function recordCard(record,group){
+  const card=element('article','','card');
+  const head=element('div','','card-head'), title=element('div');
+  title.append(element('h3',record.title),element('p',group[3],'subtitle'));
+  head.append(title,button('Edit',()=>edit(group,record)));head.lastChild.setAttribute('aria-label','Edit '+record.title);
+  card.append(head);
+  const dl=element('dl','','metrics');
+  for(const [field,label,type] of group[4]){
+    const val=record[field];
+    const item=element('div','','metric'), dd=element('dd');
+    item.append(element('dt',label),dd);
+    if(type==='status') dd.append(badge(val || 'unknown',statusLabels));
+    else if(type==='url' && val) dd.append(link('Open service ↗',val));
+    else if(val) dd.textContent=choices[type]?.[val] || (['number','integer'].includes(type)?number.format(val):val);
+    else dd.textContent='—';
+    dl.append(item);
+  }
+  card.append(dl);
+  if(record.group==='gpu'||record.group==='asic'){
+    const readings=state.history.filter(r=>r.id===record.id && r.period===record.period).sort((a,b)=>a.date.localeCompare(b.date)).slice(record.period==='other' ? -1 : -7);
+    card.append(chart('Reward readings'+(record.period?' · '+choices.period[record.period]:''),readings.map(r=>({label:dateLabel(r.date)+' · '+evidenceOptions[r.evidence||'unknown'],value:r.reward}))));
+  }
+  if(record.group==='wallet'){
+    card.append(chart('Wallet and allocation totals',[['balance','Wallet balance'],['allocated','dApp allocation']].filter(([k])=>record[k]).map(([k,label])=>({value:record[k],label}))));
+  }
+  const evidence=element('div','','evidence');
+  evidence.append(badge(record.status||'unknown',statusLabels),document.createTextNode(' '),badge(record.evidence||'unknown',evidenceOptions));
+  evidence.append(element('span',record.date ? 'Observed '+dateLabel(record.date) : 'Observation date pending','stamp'));
+  if(record.note) evidence.append(element('p',record.note,'note'));
+  if(record.url) evidence.append(link('Evidence or reference ↗',record.url));
+  card.append(evidence);
+  return card;
+}
+function render(){
+  const root=byId('sections'),nav=byId('nav');root.replaceChildren();nav.replaceChildren();
+  for(const group of groups){
+    const section=element('section','','group');section.id=group[0];section.setAttribute('aria-labelledby',group[0]+'-heading');
+    const anchor=element('a',group[1]);anchor.href='#'+group[0];nav.append(anchor);
+    const heading=element('h2',group[2]);heading.id=group[0]+'-heading';
+    const head=element('div','','section-head');
+    const add=button('+ Add record',()=>edit(group));add.setAttribute('aria-label','Add record to '+group[1]);head.append(heading,add);
+    section.append(head);
+    const records=state.records.filter(r=>r.group===group[0]);
+    if(!records.length) section.append(element('p',group[0]==='listings'?'No exchange listings recorded. Add the exchange, trading pair, listing stage and an evidence link or note.':'No records yet.','empty'));
+    else {
+      const grid=element('div','','grid');
+      for(const record of records) grid.append(recordCard(record,group));
+      section.append(grid);
+    }
+    root.append(section);
+  }
+}
+const editor=byId('editor');
+let editing;
+function edit(group, record){
+  editing=record||{group:group[0],status:'unknown',evidence:'unknown'};
+  byId('editor-title').textContent=(record?'Edit '+record.title:'Add record · '+group[1]);
+  byId('form-feedback').textContent='';
+  const fields=byId('fields');fields.replaceChildren();
+  const definitions=[['title','Record name','text',true],['status','Last recorded status','status'],...group[4],['evidence','Evidence label','evidence'],['date','Observation date (UTC, YYYY-MM-DD)','date'],['time','Observation time (UTC, optional)','time'],['url','Evidence or reference URL','url'],['note','Evidence note','textarea']];
+  for(const [id,label,type,required] of definitions){
+    const options=type==='evidence'?evidenceOptions:choices[type];
+    const wrap=element('label',label,id==='note'?'wide':'');
+    const control=element(options?'select':type==='textarea'?'textarea':'input');
+    control.name=id;control.required=!!required;
+    if(options){
+      control.append(element('option','—'));control.firstChild.value='';
+      for(const [code,label] of Object.entries(options)){const option=element('option',label);option.value=code;control.append(option);}
+    } else if(control.tagName==='INPUT'){
+      control.type=['date','time','url'].includes(type)?type:'text';
+      if(['number','integer'].includes(type)) control.inputMode=type==='integer'?'numeric':'decimal';
+    } else control.rows=3;
+    control.value=id==='time'?(editing.date?.slice(11,16)||''):id==='date'?(editing.date?.slice(0,10)||''):(editing[id]||'');
+    wrap.append(control);fields.append(wrap);
+  }
+  editor.showModal();fields.querySelector('input').focus();
+}
+byId('cancel').addEventListener('click',()=>editor.close());
+byId('form').addEventListener('submit',event=>{
+  event.preventDefault();
+  try{
+    const raw=Object.fromEntries([...new FormData(event.currentTarget)].map(([k,v])=>[k,v.trim()]));
+    if(raw.time && !raw.date) throw Error('Add an observation date when entering a UTC time.');
+    if(raw.date && raw.time) raw.date+='T'+raw.time+'Z';
+    if((raw.status==='healthy'||raw.status==='offline'||raw.status==='degraded'||raw.status==='live'||['healthy','offline','degraded'].includes(raw.pool)) && !raw.date) throw Error('Add the UTC date for this status check.');
+    const record=normalizeRecord({...raw,id:editing.id||('record-'+Date.now()+'-'+Math.random().toString(36).slice(2)),group:editing.group});
+    const records=editing.id?state.records.map(item=>item.id===editing.id?record:item):[...state.records,record];
+    const history=state.history.filter(item=>!(item.id===record.id && item.date===record.date && item.period===record.period && record.reward));
+    if(record.reward) history.push(record);
+    save({schema:1,records,history});editor.close();tell('Saved in this browser.');
+    document.querySelector('#'+record.group+' .section-head button').focus();
+  }catch(error){byId('form-feedback').textContent=error.message;}
+});
+byId('export').addEventListener('click',()=>{
+  const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));
+  const a=element('a');a.href=url;a.download='Solstice1-Chain-1404-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+byId('import').addEventListener('click',()=>byId('file').click());
+let pendingImport;
+byId('file').addEventListener('change',async event=>{
+  const file=event.target.files[0];event.target.value='';
+  if(!file) return;
+  try{pendingImport=readBackup(JSON.parse(await file.text()));byId('import-dialog').showModal();}
+  catch(error){tell('Import failed. '+error.message,true);}
+});
+byId('cancel-import').addEventListener('click',()=>byId('import-dialog').close());
+byId('confirm-import').addEventListener('click',()=>{
+  try{save(pendingImport);tell('Backup imported in this browser.');}
+  catch(error){tell('Import failed. '+error.message,true);}
+  byId('import-dialog').close();
+});
+render();
+// Read-only public API; never connects a wallet or signs transactions.
+const x30Wallet='0xBcc94d4d4A69027Af162930Fd44D87Eb34540035';
+const x30Api='https://dagcore.net/api/v1/miners/'+encodeURIComponent(x30Wallet);
+function weiBDAG(wei){
+  if(typeof wei!=='string'||!/^[0-9]+$/.test(wei))return '—';
+  const n=BigInt(wei),base=1000000000000000000n;
+  const whole=(n/base).toLocaleString('en-US');
+  const fractional=(n%base).toString().padStart(18,'0').slice(0,3).replace(/0+$/,'');
+  return whole+(fractional?'.'+fractional:'');
+}
+function liveMetric(label,value){
+  const dl=element('dl','','metric');dl.append(element('dt',label),element('dd',String(value)));return dl;
+}
+async function refreshX30(){
+  const status=byId('live-state'),metrics=byId('live-metrics'),time=byId('live-time');
+  status.textContent='Checking DAGCore…';status.className='hint';
+  try{
+    const response=await fetch(x30Api,{cache:'no-store',headers:{Accept:'application/json'}});
+    if(!response.ok)throw Error('API returned HTTP '+response.status);
+    const data=await response.json();
+    if(!data.generatedAt||!data.hashrate||!data.balance)throw Error('Unexpected API response');
+    const age=Number(data.hashrate.dataAgeSeconds);
+    const stale=!Number.isFinite(age)||age>120;
+    const rate=(key)=>{const v=data.hashrate[key];return !stale&&v&&!v.stale&&Number.isFinite(v.value)?(v.value/1e6).toFixed(2)+' MH/s (estimate)':'Unavailable / stale';};
+    const paid=weiBDAG(data.balance.paidTotalWei);
+    const carried=weiBDAG(data.balance.carriedWei);
+    const unsent=weiBDAG(data.balance.unsentWei);
+    const latest=Array.isArray(data.payouts)?data.payouts.find(p=>p.status==='confirmed'):null;
+    metrics.replaceChildren(liveMetric('Hashrate · 10 min',rate('10m')),liveMetric('Hashrate · 1 hour',rate('1h')),liveMetric('Hashrate · 24 hours',rate('24h')),liveMetric('Total confirmed paid',paid+' BDAG'),liveMetric('Carried balance',carried+' BDAG'),liveMetric('Unsent balance',unsent+' BDAG'),liveMetric('Latest confirmed payout',latest?weiBDAG(latest.amountWei)+' BDAG':'Not available'),liveMetric('Accepted shares · 24h',!stale&&data.shares?.['24h']&&!data.shares['24h'].dataStale?data.shares['24h'].accepted:'Unavailable / stale'));
+    const timestamp=new Date(data.generatedAt);
+    if(!Number.isFinite(timestamp.getTime()))throw Error('Invalid API timestamp');
+    status.textContent=stale?'API responding · mining data is stale':'DAGCore API responding · mining data recent';
+    status.className=stale?'hint live-error':'hint live-status';
+    time.textContent='API generated: '+timestamp.toISOString()+' · Share data age: '+(Number.isFinite(age)?age+' seconds':'unknown')+' · Next check in up to 5 minutes';
+  }catch(err){metrics.replaceChildren();status.textContent='Live data unavailable — '+err.message;status.className='hint live-error';time.textContent='No current values displayed. Check internet access or retry.';}
+}
+byId('refresh-x30').addEventListener('click',refreshX30);
+refreshX30();setInterval(refreshX30,300000);
+</script>
+</body>
+</html>
