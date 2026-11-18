@@ -1,54 +1,54 @@
 {
-  "generatedAt": "2026-11-18T03:40:35.188Z",
+  "generatedAt": "2026-11-18T03:41:49.265Z",
   "hashrate": {
     "10m": {
-      "value": 81026168.57253693,
+      "value": 86427913.14403938,
       "unit": "H/s",
       "estimated": true,
       "overSeconds": 600,
       "stale": false
     },
     "1h": {
-      "value": 82601677.40589182,
+      "value": 82151532.02493328,
       "unit": "H/s",
       "estimated": true,
       "overSeconds": 3600,
       "stale": false
     },
     "24h": {
-      "value": 79317448.24045649,
+      "value": 79340406.3548557,
       "unit": "H/s",
       "estimated": true,
       "overSeconds": 86400,
       "stale": false
     },
-    "dataReadThrough": "2026-11-18T03:40:24.063Z",
-    "dataAgeSeconds": 11,
+    "dataReadThrough": "2026-11-18T03:41:24.272Z",
+    "dataAgeSeconds": 25,
     "method": "Accepted shares \u00d7 the share difficulty assigned to each connection \u00d7 65,536, per second over the window: an estimate derived from shares, not a count of hashes."
   },
   "shares": {
     "10m": {
-      "accepted": 60,
+      "accepted": 64,
       "stale": 0,
       "overSeconds": 600,
       "dataStale": false
     },
     "1h": {
-      "accepted": 367,
+      "accepted": 365,
       "stale": 0,
       "overSeconds": 3600,
       "dataStale": false
     },
     "24h": {
-      "accepted": 8592,
+      "accepted": 8595,
       "stale": 2,
       "overSeconds": 86400,
       "dataStale": false
     },
     "staleCountedSince": "2026-09-27T14:28:00.000Z"
   },
-  "lastShareAt": "2026-11-18T03:40:13.569Z",
-  "lastActiveAt": "2026-11-18T03:40:00.000Z",
+  "lastShareAt": "2026-11-18T03:41:19.570Z",
+  "lastActiveAt": "2026-11-18T03:41:00.000Z",
   "balance": {
     "carriedWei": "0",
     "unsentWei": "0",
@@ -56,12 +56,12 @@
       "closesAt": "2026-11-18T04:00:12.841Z",
       "status": "accumulating",
       "waitingFor": null,
-      "inflowWei": "18288810217314000000000",
-      "feeWei": "182888102173140000000",
-      "weightNum": "3200321539190320753504",
-      "weightDen": "22549500070138799999481",
+      "inflowWei": "19383012538008000000000",
+      "feeWei": "193830125380080000000",
+      "weightNum": "3411082593977699021369",
+      "weightDen": "26307750081828599999382",
       "share": {
-        "value": "2312702947585475909277",
+        "value": "2239275396987713004669",
         "unit": "wei",
         "estimated": true
       },
@@ -236,5 +236,5 @@
     }
   ],
   "pplns": null,
-  "_dashboardFetchedAt": "2026-11-18T03:40:35.274148Z"
+  "_dashboardFetchedAt": "2026-11-18T03:41:49.356313Z"
 }
