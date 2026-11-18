@@ -1,0 +1,84 @@
+
+name: Refresh DAGCore X30 mining feed
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dagcore-x30-feed
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Retrieve public X30 mining data
+        env:
+          MINER: "0xBcc94d4d4A69027Af162930Fd44D87Eb34540035"
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.request
+          from datetime import datetime, timezone
+
+          wallet = os.environ["MINER"]
+          hosts = ["dagcore.net", "dagcore.eu"]
+          last_error = None
+
+          for host in hosts:
+              try:
+                  url = f"https://{host}/api/v1/miners/{wallet}"
+                  req = urllib.request.Request(
+                      url,
+                      headers={
+                          "Accept": "application/json",
+                          "User-Agent": "Solstice1-Dashboard/1.0"
+                      }
+                  )
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      data = json.load(response)
+
+                  if not isinstance(data, dict) or not all(
+                      key in data for key in ("generatedAt", "hashrate", "balance")
+                  ):
+                      raise ValueError("Unexpected API response")
+
+                  data["_dashboardFetchedAt"] = (
+                      datetime.now(timezone.utc)
+                      .isoformat()
+                      .replace("+00:00", "Z")
+                  )
+
+                  pathlib.Path("dagcore-x30-live.json").write_text(
+                      json.dumps(data, indent=2) + "\n",
+                      encoding="utf-8"
+                  )
+                  print("Retrieved data from", host)
+                  break
+              except Exception as error:
+                  last_error = error
+          else:
+              raise SystemExit(
+                  f"API unavailable; keeping previous data: {last_error}"
+              )
+          PY
+
+      - name: Publish updated mining data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dagcore-x30-live.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh public DAGCore mining data"
+            git push
+          fi
