@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solstice1 Live X30 Mining</title>
+<style>
+body{background:#0b1018;color:#eef3fb;font-family:Arial,sans-serif;margin:0;padding:20px}
+main{max-width:850px;margin:auto}h1{color:#f396d2}
+.panel,.metric{background:#172234;border:1px solid #33445c;border-radius:12px;padding:18px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.label{color:#b4c4d7;font-size:14px}.value{font-size:23px;font-weight:bold;margin-top:8px;overflow-wrap:anywhere}
+button{background:#62e5bd;color:#081a17;border:0;border-radius:8px;padding:12px;font-weight:bold}
+small{color:#b4c4d7}
+</style>
+</head>
+<body>
+<main>
+<h1>Solstice1 Community BDAG</h1>
+<p>Chain 1404 | X30 ASIC Mining Dashboard</p>
+<div class="panel">
+<h2>DAGCore X30 Mining Feed</h2>
+<p id="status">Loading mining data...</p>
+<p id="updated"></p>
+<button onclick="refresh()">Refresh now</button>
+</div>
+<div id="metrics" class="grid"></div>
+<div class="panel">
+<p>Public DAGCore mining data via GitHub Actions.</p>
+<p>Scheduled updates approximately every five minutes. GitHub may delay updates.</p>
+<p>No wallet connection or transactions.</p>
+</div>
+<footer>
+<small>Community Build Decentralise And Grow</small>
+<p>Facts first, hype second!</p>
+</footer>
+</main>
+<script>
+function bd(wei){
+try{let n=BigInt(wei),b=1000000000000000000n;
+return (n/b).toLocaleString("en-US")+"."+(n%b).toString().padStart(18,"0").slice(0,3)+" BDAG"}
+catch{return "Unavailable"}
+}
+function rate(x){let n=Number(x?.value);return Number.isFinite(n)?(n/1e6).toFixed(2)+" MH/s":"Unavailable"}
+function card(label,value){
+let e=document.createElement("div");e.className="metric";
+let a=document.createElement("div");a.className="label";a.textContent=label;
+let b=document.createElement("div");b.className="value";b.textContent=value;
+e.append(a,b);document.getElementById("metrics").append(e)
+}
+async function refresh(){
+let s=document.getElementById("status"),u=document.getElementById("updated");
+s.textContent="Checking GitHub mining feed...";
+try{
+let r=await fetch("dagcore-x30-live.json?t="+Date.now(),{cache:"no-store"});
+if(!r.ok)throw Error("HTTP "+r.status);
+let d=await r.json();
+if(!d.hashrate||!d.balance||!d.generatedAt)throw Error("Incomplete data");
+let age=Date.now()-new Date(d._dashboardFetchedAt||d.generatedAt).getTime();
+s.textContent=Number.isFinite(age)&&age>=-120000&&age<1200000?"Mining feed available":"Warning: mining feed is outdated";
+u.textContent="GitHub retrieval (UTC): "+(d._dashboardFetchedAt||"Unknown")+" | DAGCore generated (UTC): "+d.generatedAt;
+document.getElementById("metrics").replaceChildren();
+card("10-minute hashrate",rate(d.hashrate["10m"]));
+card("1-hour hashrate",rate(d.hashrate["1h"]));
+card("24-hour hashrate",rate(d.hashrate["24h"]));
+card("Accepted shares | 24h",d.shares?.["24h"]?.accepted??"Unavailable");
+card("Lifetime pool payouts",bd(d.balance.paidTotalWei));
+let p=Array.isArray(d.payouts)?d.payouts.find(x=>x.status==="confirmed"):null;
+card("Latest confirmed payout",p?bd(p.amountWei):"Unavailable")
+}catch(e){
+s.textContent="Mining feed unavailable: "+e.message;
+u.textContent="Unable to verify current data";
+document.getElementById("metrics").replaceChildren()
+}
+}
+refresh();setInterval(refresh,300000);
+</script>
+</body>
+</html>
