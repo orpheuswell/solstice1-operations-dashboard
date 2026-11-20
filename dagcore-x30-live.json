@@ -1,67 +1,67 @@
 {
-  "generatedAt": "2026-11-20T01:25:23.663Z",
+  "generatedAt": "2026-11-20T08:59:35.887Z",
   "hashrate": {
     "10m": {
-      "value": 85221549.56492595,
+      "value": 74531941.55430321,
       "unit": "H/s",
       "estimated": true,
       "overSeconds": 600,
       "stale": false
     },
     "1h": {
-      "value": 79773309.12026137,
+      "value": 74328302.36972865,
       "unit": "H/s",
       "estimated": true,
       "overSeconds": 3600,
       "stale": false
     },
     "24h": {
-      "value": 80340593.27669555,
+      "value": 80388835.63307293,
       "unit": "H/s",
       "estimated": true,
       "overSeconds": 86400,
       "stale": false
     },
-    "dataReadThrough": "2026-11-20T01:24:59.032Z",
-    "dataAgeSeconds": 25,
+    "dataReadThrough": "2026-11-20T08:59:31.834Z",
+    "dataAgeSeconds": 4,
     "method": "Accepted shares \u00d7 the share difficulty assigned to each connection \u00d7 65,536, per second over the window: an estimate derived from shares, not a count of hashes."
   },
   "shares": {
     "10m": {
-      "accepted": 56,
+      "accepted": 61,
       "stale": 0,
       "overSeconds": 600,
       "dataStale": false
     },
     "1h": {
-      "accepted": 342,
+      "accepted": 365,
       "stale": 0,
       "overSeconds": 3600,
       "dataStale": false
     },
     "24h": {
-      "accepted": 8305,
-      "stale": 7,
+      "accepted": 8325,
+      "stale": 8,
       "overSeconds": 86400,
       "dataStale": false
     },
     "staleCountedSince": "2026-09-27T14:28:00.000Z"
   },
-  "lastShareAt": "2026-11-20T01:24:45.437Z",
-  "lastActiveAt": "2026-11-20T01:24:00.000Z",
+  "lastShareAt": "2026-11-20T08:59:15.620Z",
+  "lastActiveAt": "2026-11-20T08:59:00.000Z",
   "balance": {
     "carriedWei": "0",
     "unsentWei": "0",
     "openWindow": {
-      "closesAt": "2026-11-20T01:30:05.129Z",
+      "closesAt": "2026-11-20T09:00:12.953Z",
       "status": "accumulating",
       "waitingFor": null,
-      "inflowWei": "45174924382938000000000",
-      "feeWei": "451749243829380000000",
-      "weightNum": "10128671111500108936849",
-      "weightDen": "64111323728825999998626",
+      "inflowWei": "51271194455376000000000",
+      "feeWei": "512711944553760000000",
+      "weightNum": "9590381820286135569027",
+      "weightDen": "72512117872603199998472",
       "share": {
-        "value": "6359059135416637359213",
+        "value": "6041940546780265408614",
         "unit": "wei",
         "estimated": true
       },
@@ -70,10 +70,130 @@
         "estimated": true
       }
     },
-    "paidTotalWei": "8831073508995325270963165",
+    "paidTotalWei": "8936116046140808774320667",
     "payoutMinimumWei": "1000000000000000000"
   },
   "payouts": [
+    {
+      "at": "2026-11-20T08:33:02.483Z",
+      "amountWei": "7564259986817674007554",
+      "shareNum": "12094189761632511608390",
+      "shareDen": "91745514991250999998210",
+      "txHash": "0x1a75e5726e33e52cd3b7f02b74b36166c4a3b4e64fafde2413c6e6e45c57ec10",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T08:03:03.443Z",
+      "amountWei": "5598954424998659752109",
+      "shareNum": "8613307796665692051603",
+      "shareDen": "62563809018130199998666",
+      "txHash": "0x4016327d01829d6668dc5869c4d9a443b0b737587dae0dcedc66e74ae88fc2f9",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T07:32:57.315Z",
+      "amountWei": "7325177676960567491699",
+      "shareNum": "11978639581633581062841",
+      "shareDen": "82902573787274999998295",
+      "txHash": "0xc05117367ccb5339daca912c27a942165e2e99e2d8e3cec32d5e8017c468f45f",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T07:02:38.031Z",
+      "amountWei": "7751560369738174668374",
+      "shareNum": "11939253553697612118930",
+      "shareDen": "79586470835783999998375",
+      "txHash": "0xa029bd77815814b9de83a14dc9453649407112ace7b40e357fe265fe601f430b",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T06:32:53.037Z",
+      "amountWei": "6720829639692313656036",
+      "shareNum": "10638350267414200187246",
+      "shareDen": "79365397305684599998373",
+      "txHash": "0x2279725c086b46c03390174a60f7f7a3252987418585dd975cc97efe69add98f",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T06:02:51.970Z",
+      "amountWei": "7365194740700336470311",
+      "shareNum": "12227411513314636138324",
+      "shareDen": "70522456101708599998497",
+      "txHash": "0xf517e2028314b4fbc01c5cd0f518a2d6a8b9f04af49b096739d964cdd9aee6e6",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T05:32:53.399Z",
+      "amountWei": "6784364916611906620122",
+      "shareNum": "10426965480305525417460",
+      "shareDen": "80912912016380399998338",
+      "txHash": "0xd0d5fd75c9860ad0f69f69503b1f626b5b2cd747ebee70608503c905ad1804ee",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T05:02:45.317Z",
+      "amountWei": "7102803714151237163944",
+      "shareNum": "11307354048502178978805",
+      "shareDen": "75607147293994799998378",
+      "txHash": "0xd04da643a9114e907f967963100747cb6672aa3d093b6a342a09989e1e5c8f59",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T04:33:14.981Z",
+      "amountWei": "6585282021403480333680",
+      "shareNum": "10487326389578595114436",
+      "shareDen": "67206353150217599998519",
+      "txHash": "0x5fd3d534beb2a536408bad0b5427335d25514b884e95390880b5eeba0ad1ef94",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T04:02:57.022Z",
+      "amountWei": "7867575410707548131797",
+      "shareNum": "12834148869421361987582",
+      "shareDen": "82018279666877399998282",
+      "txHash": "0xaf150c11e8c7a2c031d3ad1a827fb0010d3f6f4768690863e287066a1d850fca",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T03:32:39.866Z",
+      "amountWei": "6821879273005080440196",
+      "shareNum": "10733670937210085379323",
+      "shareDen": "75165000233795999998425",
+      "txHash": "0x86c66e6a70062fdb766829177b5a320aa2ed8cfa752de2cce69650d41642f2e1",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T03:03:45.837Z",
+      "amountWei": "6845226025864219918781",
+      "shareNum": "10631413314895345221607",
+      "shareDen": "70301382571609199998438",
+      "txHash": "0xe9c2bed14746db649132d4cf9369dcaf489d68ccbf31b98dfe19de95c8b9e5a3",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T02:32:40.882Z",
+      "amountWei": "6160234732363193348369",
+      "shareNum": "9835838571596427081289",
+      "shareDen": "75386073763895399998451",
+      "txHash": "0x92ed59ca442990890b763248b76a18c7fd9f485989b487ef66eab30a077371eb",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T02:02:54.529Z",
+      "amountWei": "7233020338880277059259",
+      "shareNum": "11686002248190923819983",
+      "shareDen": "75607147293994799998388",
+      "txHash": "0x803e53226c23fdc8ce9715abf3c4aa7a3929ac997a98c1c831f2b94cfc43d1e1",
+      "status": "confirmed"
+    },
+    {
+      "at": "2026-11-20T01:32:40.879Z",
+      "amountWei": "7316173873588834295271",
+      "shareNum": "11249035033781954779262",
+      "shareDen": "75165000233795999998371",
+      "txHash": "0xd05fa8dc8383472b0939d9f21268f5d35c561adf826c96d1812a55470b6d7a2d",
+      "status": "confirmed"
+    },
     {
       "at": "2026-11-20T01:02:43.166Z",
       "amountWei": "6046206137346010087946",
@@ -113,129 +233,9 @@
       "shareDen": "77154662004690599998307",
       "txHash": "0x7fe1b3f72dc16b2a98377dc43ed145c227e0f8fa43fa296133785078bae1b4ad",
       "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T22:32:58.012Z",
-      "amountWei": "6501744695330684675332",
-      "shareNum": "10109612742982600078021",
-      "shareDen": "63669176668627199998488",
-      "txHash": "0x0912bbdf5ad17873a1dc5f47aca00cb5ca7b942be64b19ca3263ca3e45299130",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T22:03:21.191Z",
-      "amountWei": "5465990507606828589766",
-      "shareNum": "8828389012564635427423",
-      "shareDen": "64111323728825999998446",
-      "txHash": "0x472c56bf5d653347809ef08955ed5b2c7a16c060d9df0898ec6a179ed8e46004",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T21:33:07.997Z",
-      "amountWei": "6733879292343270081429",
-      "shareNum": "10853138786194281449688",
-      "shareDen": "72954264932801999998420",
-      "txHash": "0x703469dbe9fc68eebb9d05cd53b6931344409d25f5522bf81e13115b3b09d72a",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T21:03:18.684Z",
-      "amountWei": "6675960701422177044617",
-      "shareNum": "10440006168749811946124",
-      "shareDen": "73617485523100199998345",
-      "txHash": "0xd09c1a7ed08df996aa1a4152e02e0945072cfba8adfe09d8142de96f887d3a20",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T20:33:05.433Z",
-      "amountWei": "7046826930169560948389",
-      "shareNum": "11517351725160556022022",
-      "shareDen": "76712514944491799998260",
-      "txHash": "0xc38eb8bc21cf6943b9aeb5a51b6d7e8f79534a059a47720d0e641fc5ec71b1e9",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T20:02:38.343Z",
-      "amountWei": "6802811939576097487140",
-      "shareNum": "10140536723116588134342",
-      "shareDen": "64774544319124199998516",
-      "txHash": "0xb4be2f26001969610ea6d8642eaedb6caf0c41819a29670918b292cf61ee52e9",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T19:33:51.309Z",
-      "amountWei": "6452345252422113304659",
-      "shareNum": "10723408042538616926454",
-      "shareDen": "73838559053199599998405",
-      "txHash": "0xb013791e4d330bee05bae3fe195fe0000cf7cf752548fb59692099924b7108c6",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T19:03:03.113Z",
-      "amountWei": "5337210577613534551727",
-      "shareNum": "8147842478429625575988",
-      "shareDen": "72291044342503799998428",
-      "txHash": "0x74e175143cde363dad1f5df5e7b28029d53bb26bca3a8ae13bbce922a224134c",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T18:32:40.694Z",
-      "amountWei": "6781463617941094897777",
-      "shareNum": "11091518680137462160960",
-      "shareDen": "67427426680316999998493",
-      "txHash": "0x6841acff3dd11e4e3ed8868edb84db56ff1767ee55acd126650aba86925bbd4d",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T18:03:12.129Z",
-      "amountWei": "7168273903299528291221",
-      "shareNum": "11061270691300947842686",
-      "shareDen": "77154662004690599998277",
-      "txHash": "0x264eb2f07f732c7e16384e8eaa21188adbc445df61303a54f0e07636318e7a79",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T17:33:00.520Z",
-      "amountWei": "7516899913925753761398",
-      "shareNum": "11988269289260618485858",
-      "shareDen": "93514103232046199998027",
-      "txHash": "0xa50c2acc68c733531e67f065e08af5c39465e4c2bc8c6fa0cb4e55a60d4f8c80",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T17:02:46.633Z",
-      "amountWei": "6340922546537345994441",
-      "shareNum": "10419891914065208123061",
-      "shareDen": "90861220870853399998026",
-      "txHash": "0x3489306b32491e9fd66edd1130cc8893317cda08e1c315a13ed07ab622529a42",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T16:32:43.131Z",
-      "amountWei": "6854708323243438200891",
-      "shareNum": "10771411813984000036974",
-      "shareDen": "87324044389262999998133",
-      "txHash": "0x238b8418c401bc87c5f277b64d273da0d933bec0dbbb26ef712def8ec3505d84",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T16:02:48.183Z",
-      "amountWei": "8260475599992768344963",
-      "shareNum": "13400038911552894750822",
-      "shareDen": "102799191496220999997734",
-      "txHash": "0xf1870add00d6ef6d9a2063f031fb58e6b3d3b24f359ad00b8d6f94dff752bce9",
-      "status": "confirmed"
-    },
-    {
-      "at": "2026-11-19T15:32:46.093Z",
-      "amountWei": "6982715354046983048986",
-      "shareNum": "10670467976979342656782",
-      "shareDen": "97051279713636599997957",
-      "txHash": "0x8bc08f5dd886af73334ab8105948b22eeddb15167c7f860e1cac9bd2aa0c4e57",
-      "status": "confirmed"
     }
   ],
   "pplns": null,
-  "_dashboardFetchedAt": "2026-11-20T01:25:23.722698Z",
+  "_dashboardFetchedAt": "2026-11-20T08:59:35.943863Z",
   "walletBalance": null
 }
