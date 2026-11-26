@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T11:25:40.559Z",
+  "generatedAt": "2026-11-26T20:27:09.521Z",
   "hashrate": {
     "10m": {
       "value": 0,
@@ -22,8 +22,8 @@
       "overSeconds": 86400,
       "stale": false
     },
-    "dataReadThrough": "2026-11-26T11:24:56.662Z",
-    "dataAgeSeconds": 44,
+    "dataReadThrough": "2026-11-26T20:26:45.177Z",
+    "dataAgeSeconds": 24,
     "method": "Accepted shares \u00d7 the share difficulty assigned to each connection \u00d7 65,536, per second over the window: an estimate derived from shares, not a count of hashes."
   },
   "shares": {
@@ -53,13 +53,13 @@
     "carriedWei": "0",
     "unsentWei": "0",
     "openWindow": {
-      "closesAt": "2026-11-26T11:30:11.205Z",
+      "closesAt": "2026-11-26T20:30:08.092Z",
       "status": "accumulating",
       "waitingFor": null,
-      "inflowWei": "19107677161293000000000",
-      "feeWei": "191076771612930000000",
+      "inflowWei": "21593228661949000000000",
+      "feeWei": "215932286619490000000",
       "weightNum": "0",
-      "weightDen": "27023714842400099999453",
+      "weightDen": "30319289823180599999395",
       "share": {
         "value": "0",
         "unit": "wei",
@@ -236,6 +236,6 @@
     }
   ],
   "pplns": null,
-  "_dashboardFetchedAt": "2026-11-26T11:25:40.617341Z",
+  "_dashboardFetchedAt": "2026-11-26T20:27:09.595533Z",
   "walletBalance": null
 }
